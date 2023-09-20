@@ -53,6 +53,21 @@
         "fromTable": "Inventory",
         "toColumn": "Name",
         "toTable": "Fruits"
+      },
+      {
+        "name": "5a8cf220-e033-44ff-bb4f-35bf75d25725",
+        "fromColumn": "Month",
+        "fromTable": "StockValue",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_91e64384-6555-4a20-820d-f623c70bbcf1"
+      },
+      {
+        "name": "99cb421f-8cbc-4525-bc3b-66a4a309cc3d",
+        "fromColumn": "Fruit",
+        "fromTable": "StockValue",
+        "toColumn": "Name",
+        "toTable": "Fruits"
       }
     ],
     "sourceQueryCulture": "de-DE",
@@ -80,7 +95,7 @@
             "isNameInferred": true,
             "lineageTag": "0c6ea2d4-fe1a-4f64-a3d2-d4177acbd205",
             "sourceColumn": "[Value]",
-            "summarizeBy": "none",
+            "summarizeBy": "sum",
             "type": "calculatedTableColumn"
           },
           {
@@ -643,6 +658,327 @@
             "mode": "import",
             "source": {
               "expression": "Calendar(Date(Year(MIN('Inventory'[Month])), 1, 1), Date(Year(MAX('Inventory'[Month])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "StockValue",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "1767442e0e704bc28a2ee9944dc6eff8"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isDateTimeCustom\":true}"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "mmmm yyyy",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "188577aa-7f9e-47ab-b192-a51b9ff7e29d",
+            "sourceColumn": "Inventory[Month]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_91e64384-6555-4a20-820d-f623c70bbcf1"
+                },
+                "isDefault": true,
+                "relationship": "5a8cf220-e033-44ff-bb4f-35bf75d25725"
+              }
+            ]
+          },
+          {
+            "name": "Fruit",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "586f22f5-26b7-4a1b-8bcd-cfb26b94d86e",
+            "sourceColumn": "Inventory[Fruit]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Stock",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "91e8eea8-0618-430d-8ab9-d9b6e56f1fab",
+            "sourceColumn": "Inventory[Stock]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "StockValue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "\"€\"\\ #,0.00;-\"€\"\\ #,0.00;\"€\"\\ #,0.00",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "4ae46a02-fd00-4d1e-bec0-f65ca70dd5b5",
+            "sourceColumn": "[StockValue]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "af486b7b-b926-4f25-a0e1-9c264b94194c",
+        "partitions": [
+          {
+            "name": "StockValue",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "ADDCOLUMNS(Inventory,",
+                " \"StockValue\",Inventory[Stock]*LOOKUPVALUE(Fruits[Value],Fruits[Name],Inventory[Fruit],0)",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "LocalDateTable_91e64384-6555-4a20-820d-f623c70bbcf1",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "0d2bff8d-bee3-4b46-99f5-150d1a2498ad",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "d1fd98bc-8b55-44bf-afd2-cb9487cdbf60",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "8dadc028-58f5-4c64-b8ad-42a30fdbf990",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "e8aa7171-9df0-4269-ad16-f522948538b2",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "fb1b3eeb-25a6-439d-9edb-515ceda96385",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "fdbdaebb-b8cf-4f3b-a125-3b35319a6e87",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "76903236-b34f-4d5e-ba0f-eba5793d8822",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "4b70d497-7121-4d06-8b3a-cda651a8f7a6",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "d69c2642-ed90-48c6-aecb-239f58961a30",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "3d3c0df2-0541-4332-b650-4ef26c0c4222",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "b8122117-6a78-47c0-be21-cc9d5bfa2987",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "35ef737e-3aae-4336-9250-054e2f47e396"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "c82d43a5-51ed-4e1c-813f-faa4f1b61891",
+        "partitions": [
+          {
+            "name": "LocalDateTable_91e64384-6555-4a20-820d-f623c70bbcf1",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('StockValue'[Month])), 1, 1), Date(Year(MAX('StockValue'[Month])), 12, 31))",
               "type": "calculated"
             }
           }
