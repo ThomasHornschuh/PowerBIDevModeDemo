@@ -25,6 +25,7 @@
       "filters": "[]",
       "height": 720.00,
       "name": "ReportSection",
+      "ordinal": 1,
       "visualContainers": [
         {
           "config": "{\"name\":\"eb0797231700f1e77fd6\",\"layouts\":[{\"id\":0,\"position\":{\"x\":39.59516660563896,\"y\":59.99267667521055,\"z\":0,\"width\":1190.2547052361772,\"height\":623.9238374221896}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"StockValue.Fruit\",\"active\":true}],\"Columns\":[{\"queryRef\":\"StockValue.Month\",\"active\":true}],\"Values\":[{\"queryRef\":\"Sum(StockValue.Stock)\"},{\"queryRef\":\"CountNonNull(StockValue.StockValue)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"StockValue\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Fruit\"},\"Name\":\"StockValue.Fruit\",\"NativeReferenceName\":\"Fruit\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Month\"},\"Name\":\"StockValue.Month\",\"NativeReferenceName\":\"Month\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Stock\"}},\"Function\":0},\"Name\":\"Sum(StockValue.Stock)\",\"NativeReferenceName\":\"Stock\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"StockValue\"}},\"Function\":0},\"Name\":\"CountNonNull(StockValue.StockValue)\",\"NativeReferenceName\":\"Value\"}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"StockValue.Fruit\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"StockValue\"}},\"Property\":\"Fruit\"}}],\"isPinned\":true}],\"root\":{\"identityValues\":null}}],\"columnProperties\":{\"Sum(StockValue.StockValue)\":{\"displayName\":\"Total\"},\"Sum(StockValue.Stock)\":{\"displayName\":\"Stock\"},\"CountNonNull(StockValue.StockValue)\":{\"displayName\":\"Value\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"values\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"10D\"}}}}}],\"subTotals\":[{\"properties\":{\"columnSubtotals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"rowSubtotals\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"perRowLevel\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Minimal'\"}}}}}]}}}",
@@ -34,6 +35,35 @@
           "x": 39.60,
           "y": 59.99,
           "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Inventory Dashboard",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSectionbd152dfe20acd82073bc",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"85222ebf1b4a85a270b4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":49.99326599326599,\"y\":130.15488215488216,\"z\":0,\"width\":648.1885521885522,\"height\":482.6936026936027}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Inventory.Month.Variation.Date Hierarchy.Month\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(Inventory.Stock)\"}],\"Rows\":[{\"queryRef\":\"Inventory.Fruit\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"Inventory\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Stock\"}},\"Function\":0},\"Name\":\"Sum(Inventory.Stock)\",\"NativeReferenceName\":\"Stock\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Name\":\"Variation\",\"Property\":\"Month\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Month\"},\"Name\":\"Inventory.Month.Variation.Date Hierarchy.Month\",\"NativeReferenceName\":\"Month Month\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Fruit\"},\"Name\":\"Inventory.Fruit\",\"NativeReferenceName\":\"Fruit\"}]},\"columnProperties\":{\"Sum(Inventory.Stock)\":{\"displayName\":\"Stock\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Stock by Fruit'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 482.69,
+          "width": 648.19,
+          "x": 49.99,
+          "y": 130.15,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"e8c57ebc1004c99ab120\",\"layouts\":[{\"id\":0,\"position\":{\"x\":795.5824915824916,\"y\":138.77441077441077,\"z\":1,\"width\":416.32323232323233,\"height\":474.0740740740741}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"StockValue.Month\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(StockValue.StockValue)\"}],\"Series\":[{\"queryRef\":\"StockValue.Fruit\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"StockValue\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Month\"},\"Name\":\"StockValue.Month\",\"NativeReferenceName\":\"Month\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"StockValue\"}},\"Function\":0},\"Name\":\"Sum(StockValue.StockValue)\",\"NativeReferenceName\":\"Sum of StockValue\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Fruit\"},\"Name\":\"StockValue.Fruit\",\"NativeReferenceName\":\"Fruit\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Month\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Stock Value'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 474.07,
+          "width": 416.32,
+          "x": 795.58,
+          "y": 138.77,
+          "z": 1.00
         }
       ],
       "width": 1280.00
