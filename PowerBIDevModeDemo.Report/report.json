@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.47\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY23SU08\",\"version\":\"5.47\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "config": "{\"version\":\"5.47\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY23SU08\",\"version\":\"5.47\",\"type\":2}},\"activeSectionIndex\":1,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -33,6 +33,27 @@
           "width": 1190.25,
           "x": 39.60,
           "y": 59.99,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Stock Chart",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection5fcb5168d43e1d021856",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"dfb3af43656e943cc048\",\"layouts\":[{\"id\":0,\"position\":{\"x\":39.64983164983165,\"y\":60.33670033670034,\"z\":0,\"width\":1105.885521885522,\"height\":580.956228956229}}],\"singleVisual\":{\"visualType\":\"lineStackedColumnComboChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Sum(StockValue.Stock)\"}],\"Series\":[{\"queryRef\":\"StockValue.Fruit\"}],\"Category\":[{\"queryRef\":\"StockValue.Month.Variation.Date Hierarchy.Year\"},{\"queryRef\":\"StockValue.Month.Variation.Date Hierarchy.Month\",\"active\":true},{\"queryRef\":\"StockValue.Month.Variation.Date Hierarchy.Day\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"StockValue\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Stock\"}},\"Function\":0},\"Name\":\"Sum(StockValue.Stock)\",\"NativeReferenceName\":\"Stock\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Fruit\"},\"Name\":\"StockValue.Fruit\",\"NativeReferenceName\":\"Fruit\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Name\":\"Variation\",\"Property\":\"Month\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Year\"},\"Name\":\"StockValue.Month.Variation.Date Hierarchy.Year\",\"NativeReferenceName\":\"Month Year\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Name\":\"Variation\",\"Property\":\"Month\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Month\"},\"Name\":\"StockValue.Month.Variation.Date Hierarchy.Month\",\"NativeReferenceName\":\"Month Month\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Name\":\"Variation\",\"Property\":\"Month\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Day\"},\"Name\":\"StockValue.Month.Variation.Date Hierarchy.Day\",\"NativeReferenceName\":\"Month Day\"}]},\"columnProperties\":{\"Sum(StockValue.StockValue)\":{\"displayName\":\"Total\"},\"Sum(StockValue.Stock)\":{\"displayName\":\"Stock\"}},\"drillFilterOtherVisuals\":true,\"objects\":{},\"vcObjects\":{\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Minimal'\"}}}}}],\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Stock by Month'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 580.96,
+          "width": 1105.89,
+          "x": 39.65,
+          "y": 60.34,
           "z": 0.00
         }
       ],
